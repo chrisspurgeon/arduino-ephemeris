@@ -41,10 +41,8 @@ int year = 1990;
 int month = 4;
 int day = 19;
 int d;
-float sun_LoP;
-float sun_mean_distance = 1.0;
-float sun_eccentricity;
-float sun_mean_anomaly;
+
+Planet sun;
 
 void setup() {
   Serial.begin(9600);
@@ -53,22 +51,11 @@ void setup() {
   d = dayNumber(year, month, day);
   Serial.println(d);
 
-  sun_LoP = 282.9404 + 4.70935E-5 * d;
-  Serial.print("sun_LoP is ");
-  Serial.println(sun_LoP);
+  sun.longitudeOfPerihelion = 282.9404 + 4.70935E-5 * d;
+  sun.eccentricity = 0.016709 - 1.151E-9 * d;
+  sun.meanAnomaly = 356.0470 + 0.9856002585 * d;
+  sun.meanAnomaly = rev(sun.meanAnomaly);
 
-  sun_eccentricity = 0.016709 - 1.151E-9 * d;
-  Serial.print("sun_eccentricity is ");
-  Serial.println(sun_eccentricity);
-
-  sun_mean_anomaly = 356.0470 + 0.9856002585 * d;
-  Serial.print("sun_mean_anomaly is ");
-  Serial.println(sun_mean_anomaly);
-  
-//  sun_mean_anomaly = sun_mean_anomaly % 360;
-  Serial.println(rev(sun_mean_anomaly));
-
-  Planet sun;
   
 }
 
