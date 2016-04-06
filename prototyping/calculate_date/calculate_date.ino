@@ -34,6 +34,8 @@
     d is negative since our test date, 19 april 1990, is earlier than the "point of origin" of our day number, 31 dec 1999.
 
 */
+#include "Planet.c"
+
 
 int year = 1990;
 int month = 4;
@@ -65,6 +67,8 @@ void setup() {
   
 //  sun_mean_anomaly = sun_mean_anomaly % 360;
   Serial.println(rev(sun_mean_anomaly));
+
+  Planet sun;
   
 }
 
